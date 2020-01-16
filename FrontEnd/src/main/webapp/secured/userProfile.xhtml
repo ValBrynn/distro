@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <title>Profile</title>
+</h:head>
+<h:body>
+    <h:form>
+
+            <h:outputLabel>Welcome </h:outputLabel>
+            <h:outputLabel>#{logIn.userName} </h:outputLabel>
+            <br/>
+            <br/>
+        <h:outputLabel>Log: </h:outputLabel>
+        <ui:repeat var="UserLog" value="#{log.getLogs()}">
+             #{UserLog.message}, #{UserLog.date} <br></br>
+        </ui:repeat>
+        <br/>
+        <br/>
+        <h:commandButton id="logBtn" type="submit" action="#{navigation.toLog()}" value="Post"></h:commandButton>
+        &#xA0; &#xA0;
+        <h:commandButton id="sendMessageBtn" type="submit" action="#{navigation.toMessage()}" value="Send Message"></h:commandButton>
+        &#xA0; &#xA0;
+        <h:commandButton id="inboxBtn" type="submit" action="#{navigation.toInbox()}" value="Inbox"></h:commandButton>
+        &#xA0; &#xA0;
+        <h:commandButton id="sentBtn" type="submit" action="#{navigation.toSentMessages()}" value="sentMessages"></h:commandButton>
+        <br/>
+        <br/>
+        <h:inputText value="#{search.findUser}"> </h:inputText>
+        <br/>
+        <br/>
+
+        <h:commandButton id="searchBtn" type="submit" action="#{search.findUser()}" value="Search"></h:commandButton>
+        <br/>
+        <br/>
+        <h:commandButton id="createBtn" type="submit" action="#{logIn.logOut()}" value="Log Out"></h:commandButton>
+
+
+    </h:form>
+</h:body>
+
+</html>
